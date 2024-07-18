@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- xth-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>[[${title}]]</h1> <!-- 대괄호 두개, 중괄호 한개 하면 키값 불러옴 -->
+<p>[[${dvd.getTitle()}]]</p>
+<p>[[${dvd['producer']}]]</p>
+<p>[[${dvd.publisher}]]</p>
+<p>[[${names[0]}]]</p>
+<p>[[${names[1]}]]</p>
+<p>[[${names[2]}]]</p>
+<p>[[${dvdList[0].title}]]</p>
+<p>[[${dvdList[2].publisher}]]</p>
+<p>[[${dvdList[1].producer}]]</p>
+<table>
+    <thead>
+        <tr>
+            <th>index</th>
+            <th>title</th>
+            <th>producer</th>
+            <th>publisher</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="dvd, state : ${dvdList}"> <!-- each = 포이치-->
+            <td>[[${state.count}]]</td>
+            <td>[[${dvd.title}]]</td>
+            <td>[[${dvd.producer}]]</td>
+            <td>[[${dvd.publisher}]]</td>
+        </tr>
+    </tbody>
+</table>
+    <p th:each="name, state : ${names}">인덱스 : [[${state.index}]] 순번 : [[${state.count}]] 이름 : [[${name}]]</p>
+</body>
+</html>
